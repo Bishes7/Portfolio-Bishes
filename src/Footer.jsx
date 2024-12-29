@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [scrollYPosition, setScrollYPosition] = useState(0);
+  const handleOnScrollY = () => {
+    setScrollYPosition(window.scrollY);
+    console.log(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleOnScrollY);
+
+    return () => {
+      window.removeEventListener("scroll", handleOnScrollY);
+    };
+  }, []);
   return (
     <>
       <footer className="flex-center">
@@ -44,9 +57,11 @@ const Footer = () => {
         </div>
         <div className="bottom">&copy;Copy right, all right reserved 2024</div>
       </footer>
-      <a href="#hero" className="go-up flex-center">
-        <i className="fa-solid fa-chevron-up"></i>
-      </a>
+      {scrollYPosition > 800 && (
+        <a href="#hero" className="go-up flex-center">
+          <i className="fa-solid fa-chevron-up"></i>
+        </a>
+      )}
     </>
   );
 };
