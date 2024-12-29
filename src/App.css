@@ -396,8 +396,13 @@ footer .top {
     line-height: 2.5rem;
   }
 
-  #hamburger-menu:checked + .menu {
+  .slide{
     left: calc(100vw - 260px);
+
+  }
+
+  /* #hamburger-menu:checked + .menu {
+    left: calc(100vw - 260px); */
   }
   [for="hamburger-menu"] {
     cursor: pointer;
